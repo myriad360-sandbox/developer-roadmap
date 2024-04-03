@@ -21,6 +21,13 @@ export function UpdateProfileForm() {
     setIsLoading(true);
     setError('');
     setSuccess('');
+    const res = await fetch('/api/models/microsoft/Mistral-7B-v0.1-onnx', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt }),
+      });
 
     const { response, error } = await httpPost(
       `${import.meta.env.PUBLIC_API_URL}/v1-update-profile`,

@@ -21,7 +21,14 @@ export function UpdateProfileForm() {
     setIsLoading(true);
     setError('');
     setSuccess('');
-    const res = await fetch('/api/models/microsoft/Mistral-7B-v0.1-onnx', {
+    const res1 = await fetch('/api/models/microsoft/Mistral-7B-v0.1-onnx', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt }),
+      });
+      const res2 = await fetch('/api/models/microsoft/falcon-7B-onnx', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
